@@ -1,5 +1,5 @@
 import React from "react";
-import {mergeSortHelp} from "../SortingAlgorithms/sortingAlgorithms";
+import { getMergeSortAnimations } from "../SortingAlgorithms/sortingAlgorithms";
 import './SortingVisualizer.css';
 
 export class SortingVisualizer extends React.Component {
@@ -19,24 +19,28 @@ export class SortingVisualizer extends React.Component {
         for (let i = 0; i < 310; i++) {
             let value = randomIntFromInterval(5, 730);
             array.push(value);
-            console.log(value);
+            //console.log(value);
         }
         this.setState({ array });
     }
 
-    mergeSort(){
-        const jsSortedArray = this.state.array
-        .slice().
-        sort((a,b) => a-b);
-        const sortedArray = mergeSortHelp(this.state.array);
-        console.log(isArraysEqual(jsSortedArray, sortedArray));
-    }
-    quickSort(){}
-    bubbleSort(){}
-    heapSort(){}
+    mergeSort() {
+        const animations = sortingAlgorithms.mergeSort(this.state.array);
 
-    testSortingAlgorithm(){
-        
+    }
+    quickSort() { }
+    bubbleSort() { }
+    heapSort() { }
+
+    testSortingAlgorithm() {
+        for (let i = 0; i < 300; i++) {
+            this.resetArray();
+            const jsSortedArray = this.state.array
+                .slice().
+                sort((a, b) => a - b);
+            const sortedArray = mergeSortHelp(this.state.array);
+            console.log(isArraysEqual(jsSortedArray, sortedArray));
+        }
     }
 
     render() {
@@ -61,6 +65,7 @@ export class SortingVisualizer extends React.Component {
                     <button onClick={() => this.quickSort()}>Quick Sort</button>
                     <button onClick={() => this.bubbleSort()}>Bubble Sort</button>
                     <button onClick={() => this.heapSort()}>Heap Sort</button>
+                    <button onClick={() => this.testSortingAlgorithm()}>Test Sorting Algorithm</button>
                 </div>
 
             </div>
@@ -75,10 +80,10 @@ function randomIntFromInterval(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-function isArraysEqual(arr1, arr2){
-    if(arr1.length !== arr2.length) return false;
-    for(let i = 0; i < arr1.length; i++){
-        if(arr1[i] !== arr2[i]){
+function isArraysEqual(arr1, arr2) {
+    if (arr1.length !== arr2.length) return false;
+    for (let i = 0; i < arr1.length; i++) {
+        if (arr1[i] !== arr2[i]) {
             return false;
         }
     }
