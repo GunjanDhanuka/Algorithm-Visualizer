@@ -11,7 +11,7 @@ import useWindowDimensions from "./utilities";
 // TODO: Add a green colour to those which are in their sorted positions.
 
 const ANIMATION_SPEED_MS = 3;
-const NUMBER_OF_ARRAY_BARS = 50;
+const NUMBER_OF_ARRAY_BARS = 310;
 const PRIMARY_COLOR = 'turquoise';
 const SECONDARY_COLOR = 'red';
 
